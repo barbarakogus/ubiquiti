@@ -67,7 +67,6 @@ const Input = () => {
 
     const [valueToSearch, setValueToSearch] = useState('')
 
-    console.log(valueToSearch)
     return (
         <StyledMainDiv>
             <section>

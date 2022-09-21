@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    contentToRender: 'table'
+    contentToRender: 'list'
 }
 
 const productsSlice = createSlice({

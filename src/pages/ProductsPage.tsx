@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import HeaderProductsPage from "../components/HeaderProductsPage";
 import { useEffect, useState } from "react";
-import ProductsTable from "../components/ProductsTable";
 import ProductsGrid from "../components/ProductsGrid";
 import { useAppSelector } from "../store";
+import ProductsList from "../components/ProductsList";
 
 const StyledMainDiv = styled.div`
     
@@ -11,7 +11,7 @@ const StyledMainDiv = styled.div`
 
 const ProductsPage = () => {
 
-    const [data, setData] = useState([]);
+    const [products, setProducts] = useState<Product[]>([])
 
     const { contentToRender } = useAppSelector((state) => state.products)
 
@@ -23,14 +23,23 @@ const ProductsPage = () => {
                 }
                 return res.json()
             })
-            .then(res => setData(res))
+            .then(res => res.devices)
+            .then(devices => devices.map((d: any) => ({
+                line: d.line.name,
+                name: d.product.name,
+            })))
+            .then(products => setProducts(products))
+            .catch(err => console.log(err))
+
 
     }, [])
 
     return (
         <StyledMainDiv>
             <HeaderProductsPage />
-            {contentToRender === 'table' ? <ProductsTable /> : <ProductsGrid />}
+            {contentToRender === 'list'
+                ? <ProductsList data={products} />
+                : <ProductsGrid />}
         </StyledMainDiv>
     )
 }
