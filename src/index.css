@@ -24,9 +24,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-/* //#BDBDBD; */
+
 :root  {
-  --dark-gray: #838691; 
+
+  --neutral-black:  rgba(0, 0, 0, 0.65);
+  
+  --dark-gray: #838691;
   --light-gray: #F6F6F8; 
   --neutral-gray: #DBDCE1;
+  --gray: #BDBDBD;
 }

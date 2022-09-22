@@ -20,7 +20,7 @@ const StyledTtile = styled.h1`
 `
 
 const StyledParagraph = styled.p`
-    color: rgba(0, 0, 0, 0.65);
+    color: var(--neutral-black);
     margin-right: 1.75rem;
 `
 
