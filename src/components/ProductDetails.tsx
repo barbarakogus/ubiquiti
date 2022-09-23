@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { RiArrowLeftSLine } from 'react-icons/ri';
 
 const StyledMainContainer = styled.div`
     align-items: center;
@@ -25,48 +26,54 @@ const StyledParagrapf = styled.p`
 `
 interface ProductDetailsProps {
     productSelected: Product
+    onClickBack: () => void
 }
 
-const ProductDetails = ({ productSelected }: ProductDetailsProps) => {
+const ProductDetails = ({ productSelected, onClickBack }: ProductDetailsProps) => {
     return (
-        <StyledMainContainer>
-            <div>
-                <img
-                    src="https://storage.googleapis.com/barbara_ubiquiti/images/resize_optimized_img.png"
-                    alt={productSelected.name}
-                />
+        <>
+            <div style={{ backgroundColor: 'var(--light-gray)', padding: '1rem' }}>
+                <RiArrowLeftSLine style={{ color: 'var(--dark-gray)', cursor: 'pointer' }} onClick={() => onClickBack()} />
             </div>
-            <StyledDiv>
-                <StyledSections>
-                    <StyledParagrapf>Product line</StyledParagrapf>
-                    <StyledParagrapf>{productSelected.line}</StyledParagrapf>
-                </StyledSections>
-                <StyledSections>
-                    <StyledParagrapf>ID</StyledParagrapf>
-                    <StyledParagrapf>{productSelected.id}</StyledParagrapf>
-                </StyledSections>
-                <StyledSections>
-                    <StyledParagrapf>Name</StyledParagrapf>
-                    <StyledParagrapf>{productSelected.name}</StyledParagrapf>
-                </StyledSections>
-                <StyledSections>
-                    <StyledParagrapf>Short name</StyledParagrapf>
-                    <StyledParagrapf>{productSelected.shortNames}</StyledParagrapf>
-                </StyledSections>
-                <StyledSections>
-                    <StyledParagrapf>Max power</StyledParagrapf>
-                    <StyledParagrapf>{productSelected.line}</StyledParagrapf>
-                </StyledSections>
-                <StyledSections >
-                    <StyledParagrapf>Speed</StyledParagrapf>
-                    <StyledParagrapf>{productSelected.line}</StyledParagrapf>
-                </StyledSections>
-                <StyledSections>
-                    <StyledParagrapf>Number of ports</StyledParagrapf>
-                    <StyledParagrapf>{productSelected.network?.numberOfPorts}</StyledParagrapf>
-                </StyledSections>
-            </StyledDiv>
-        </StyledMainContainer>
+            <StyledMainContainer>
+                <div>
+                    <img
+                        src="https://storage.googleapis.com/barbara_ubiquiti/images/resize_optimized_img.png"
+                        alt={productSelected.name}
+                    />
+                </div>
+                <StyledDiv>
+                    <StyledSections>
+                        <StyledParagrapf>Product line</StyledParagrapf>
+                        <StyledParagrapf>{productSelected.line}</StyledParagrapf>
+                    </StyledSections>
+                    <StyledSections>
+                        <StyledParagrapf>ID</StyledParagrapf>
+                        <StyledParagrapf>{productSelected.id}</StyledParagrapf>
+                    </StyledSections>
+                    <StyledSections>
+                        <StyledParagrapf>Name</StyledParagrapf>
+                        <StyledParagrapf>{productSelected.name}</StyledParagrapf>
+                    </StyledSections>
+                    <StyledSections>
+                        <StyledParagrapf>Short name</StyledParagrapf>
+                        <StyledParagrapf>{productSelected.shortNames}</StyledParagrapf>
+                    </StyledSections>
+                    <StyledSections>
+                        <StyledParagrapf>Max power</StyledParagrapf>
+                        <StyledParagrapf>{productSelected.line}</StyledParagrapf>
+                    </StyledSections>
+                    <StyledSections >
+                        <StyledParagrapf>Speed</StyledParagrapf>
+                        <StyledParagrapf>{productSelected.line}</StyledParagrapf>
+                    </StyledSections>
+                    <StyledSections>
+                        <StyledParagrapf>Number of ports</StyledParagrapf>
+                        <StyledParagrapf>{productSelected.network?.numberOfPorts}</StyledParagrapf>
+                    </StyledSections>
+                </StyledDiv>
+            </StyledMainContainer>
+        </>
     )
 }
 

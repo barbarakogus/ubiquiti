@@ -1,4 +1,3 @@
-import HeaderProductsPage from "../components/HeaderProductsPage";
 import { useEffect, useState } from "react";
 import ProductsGrid from "../components/ProductsGrid";
 import { useAppSelector } from "../store";
@@ -7,9 +6,7 @@ import ProductDetails from "../components/ProductDetails";
 
 const ProductsPage = () => {
     const [products, setProducts] = useState<Product[]>([]);
-    const [productSelected, setProductSelected] = useState<Product>();
-    const [maxPower, setMaxPower] = useState<number>();
-    const [maxSpeed, setMaxSpeed] = useState<number>();
+    const [productSelected, setProductSelected] = useState<Product | null>();
 
     const { contentToRender } = useAppSelector((state) => state.products);
 
@@ -66,9 +63,8 @@ const ProductsPage = () => {
 
     return (
         <div>
-            <HeaderProductsPage />
             {productSelected
-                ? <ProductDetails productSelected={productSelected} />
+                ? <ProductDetails productSelected={productSelected} onClickBack={() => setProductSelected(null)} />
                 : contentToRender === "list"
                     ? (<ProductsList data={products} onRowSelected={onProductSelected} />)
                     : (<ProductsGrid data={products} />)

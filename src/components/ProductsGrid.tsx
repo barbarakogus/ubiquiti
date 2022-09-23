@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import HeaderProductsPage from "./HeaderProductsPage";
 import ProductCard from "./ProductCard";
 
 const StyledMainContainer = styled.div`
@@ -22,14 +23,18 @@ interface ProductGridProps {
 
 const ProductsGrid = ({ data }: ProductGridProps) => {
     return (
-        <StyledMainContainer>
-            <StyledParagraph>{data.length} devices</StyledParagraph>
-            <StyledDiv>
-                {data.map((product, key) => (
-                    <ProductCard product={product} key={key} />
-                ))}
-            </StyledDiv>
-        </StyledMainContainer>
+        <>
+            <HeaderProductsPage />
+            <StyledMainContainer>
+                <StyledParagraph>{data.length} devices</StyledParagraph>
+                <StyledDiv>
+                    {data.map((product, key) => (
+                        <ProductCard product={product} key={key} />
+                    ))}
+                </StyledDiv>
+            </StyledMainContainer>
+        </>
+
     )
 }
 

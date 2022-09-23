@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import HeaderProductsPage from "./HeaderProductsPage";
 
 const StyledMainContainer = styled.div`
     margin: 1.5rem auto;
@@ -58,34 +59,37 @@ interface ProductListProps {
 
 const ProductsList = ({ data, onRowSelected }: ProductListProps) => {
     return (
-        <StyledMainContainer>
-            <StyledDiv>
-                <StyledTable>
-                    <thead>
-                        <tr>
-                            <StyledImgCollumn>{data.length} devices</StyledImgCollumn>
-                            <StyledProductLineTh>product line</StyledProductLineTh>
-                            <StyledProductNameth>name</StyledProductNameth>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {data.map((product, key) => (
-                            <StyledBodyTr key={key} onClick={() => onRowSelected(product)}>
-                                <td style={{ textAlign: 'end' }}>
-                                    <img
-                                        src="https://storage.googleapis.com/barbara_ubiquiti/images/img.png"
-                                        width={product.icon.resolutionSmall}
-                                        alt={product.name}
-                                    />
-                                </td>
-                                <StyledProductLineTd>{product.line}</StyledProductLineTd>
-                                <StyledProductNameTd>{product.name}</StyledProductNameTd>
-                            </StyledBodyTr>
-                        ))}
-                    </tbody>
-                </StyledTable>
-            </StyledDiv>
-        </StyledMainContainer >
+        <>
+            <HeaderProductsPage />
+            <StyledMainContainer>
+                <StyledDiv>
+                    <StyledTable>
+                        <thead>
+                            <tr>
+                                <StyledImgCollumn>{data.length} devices</StyledImgCollumn>
+                                <StyledProductLineTh>product line</StyledProductLineTh>
+                                <StyledProductNameth>name</StyledProductNameth>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {data.map((product, key) => (
+                                <StyledBodyTr key={key} onClick={() => onRowSelected(product)}>
+                                    <td style={{ textAlign: 'end' }}>
+                                        <img
+                                            src="https://storage.googleapis.com/barbara_ubiquiti/images/img.png"
+                                            width={product.icon.resolutionSmall}
+                                            alt={product.name}
+                                        />
+                                    </td>
+                                    <StyledProductLineTd>{product.line}</StyledProductLineTd>
+                                    <StyledProductNameTd>{product.name}</StyledProductNameTd>
+                                </StyledBodyTr>
+                            ))}
+                        </tbody>
+                    </StyledTable>
+                </StyledDiv>
+            </StyledMainContainer >
+        </>
     )
 }
 
