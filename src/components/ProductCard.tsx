@@ -4,8 +4,8 @@ const StyledCardContainer = styled.div`
   border: 1px solid var(--neutral-gray);
   border-radius: 8px;
   cursor: pointer;
-  margin-bottom: 1.5rem;
   justify-content: space-between;
+  margin-bottom: 1.5rem;
 
   &:hover {
     opacity: 0.8;
