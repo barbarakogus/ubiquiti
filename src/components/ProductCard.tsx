@@ -5,6 +5,7 @@ const StyledCardContainer = styled.div`
   border-radius: 8px;
   cursor: pointer;
   margin-bottom: 1.5rem;
+  justify-content: space-between;
 
   &:hover {
     opacity: 0.8;
@@ -26,22 +27,22 @@ const StyledProductLine = styled.p`
 `;
 
 interface ProductCardProps {
-    product: Product;
+  product: Product;
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
-    return (
-        <StyledCardContainer>
-            <StyledImage
-                src="https://storage.googleapis.com/barbara_ubiquiti/images/resize_optimized_img.png"
-                alt={product.name}
-            />
-            <div style={{ margin: "1rem" }}>
-                <StyledProductName>{product.name}</StyledProductName>
-                <StyledProductLine>{product.line}</StyledProductLine>
-            </div>
-        </StyledCardContainer>
-    );
+  return (
+    <StyledCardContainer>
+      <StyledImage
+        src="https://storage.googleapis.com/barbara_ubiquiti/images/resize_optimized_img.png"
+        alt={product.name}
+      />
+      <div style={{ margin: "1rem" }}>
+        <StyledProductName>{product.name}</StyledProductName>
+        <StyledProductLine>{product.line}</StyledProductLine>
+      </div>
+    </StyledCardContainer>
+  );
 };
 
 export default ProductCard;
