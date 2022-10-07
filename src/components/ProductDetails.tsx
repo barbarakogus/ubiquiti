@@ -1,6 +1,21 @@
 import styled from "styled-components";
 import { RiArrowLeftSLine } from 'react-icons/ri';
 
+const StyledHeaderProductDetails = styled.div`
+    border-bottom: 1px solid var(--neutral-gray);
+    border-top: 1px solid var(--neutral-gray);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 1rem 1.75rem;
+`
+
+const StyledArrowIcon = styled(RiArrowLeftSLine)`
+    color: var(--dark-gray); 
+    cursor: pointer; 
+    height: 20px;
+    width: 20px;
+`
+
 const StyledMainContainer = styled.div`
     align-items: center;
     display: flex;
@@ -32,9 +47,10 @@ interface ProductDetailsProps {
 const ProductDetails = ({ productSelected, onClickBack }: ProductDetailsProps) => {
     return (
         <>
-            <div style={{ backgroundColor: 'var(--light-gray)', padding: '1rem' }}>
-                <RiArrowLeftSLine style={{ color: 'var(--dark-gray)', cursor: 'pointer' }} onClick={() => onClickBack()} />
-            </div>
+            <StyledHeaderProductDetails>
+                <StyledArrowIcon onClick={() => onClickBack()} />
+                <StyledParagrapf style={{ justifySelf: 'center' }}>{productSelected.name}</StyledParagrapf>
+            </StyledHeaderProductDetails>
             <StyledMainContainer>
                 <div>
                     <img
@@ -59,18 +75,27 @@ const ProductDetails = ({ productSelected, onClickBack }: ProductDetailsProps) =
                         <StyledParagrapf>Short name</StyledParagrapf>
                         <StyledParagrapf>{productSelected.shortNames}</StyledParagrapf>
                     </StyledSections>
-                    <StyledSections>
-                        <StyledParagrapf>Max power</StyledParagrapf>
-                        <StyledParagrapf>{productSelected.line}</StyledParagrapf>
-                    </StyledSections>
-                    <StyledSections >
-                        <StyledParagrapf>Speed</StyledParagrapf>
-                        <StyledParagrapf>{productSelected.line}</StyledParagrapf>
-                    </StyledSections>
-                    <StyledSections>
-                        <StyledParagrapf>Number of ports</StyledParagrapf>
-                        <StyledParagrapf>{productSelected.network?.numberOfPorts}</StyledParagrapf>
-                    </StyledSections>
+                    {productSelected.maxPower ?
+                        <StyledSections>
+                            <StyledParagrapf>Max. power</StyledParagrapf>
+                            <StyledParagrapf>{productSelected.maxPower} W</StyledParagrapf>
+                        </StyledSections>
+                        : null
+                    }
+                    {productSelected.maxSpeed ?
+                        <StyledSections >
+                            <StyledParagrapf>Speed</StyledParagrapf>
+                            <StyledParagrapf>{productSelected.maxSpeed} Mbps</StyledParagrapf>
+                        </StyledSections>
+                        : null
+                    }
+                    {productSelected.network?.numberOfPorts ?
+                        <StyledSections>
+                            <StyledParagrapf>Number of ports</StyledParagrapf>
+                            <StyledParagrapf>{productSelected.network?.numberOfPorts}</StyledParagrapf>
+                        </StyledSections>
+                        : null
+                    }
                 </StyledDiv>
             </StyledMainContainer>
         </>

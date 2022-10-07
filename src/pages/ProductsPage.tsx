@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import ProductsGrid from "../components/ProductsGrid";
 import { useAppSelector } from "../store";
+import ProductsGrid from "../components/ProductsGrid";
 import ProductsList from "../components/ProductsList";
 import ProductDetails from "../components/ProductDetails";
+import HeaderProductsPage from "../components/HeaderProductsPage";
 
 const ProductsPage = () => {
     const [products, setProducts] = useState<Product[]>([]);
@@ -29,13 +30,14 @@ const ProductsPage = () => {
                         resolutionBig: 251,
                         resolutionSmall: 51,
                     },
-                    shortName: d.shortnames,
+                    shortNames: d.shortnames[0],
                     network: d?.unifi?.network,
                 }))
             )
             .then((products) => setProducts(products))
             .catch((err) => console.log(err));
     }, []);
+
 
     const onProductSelected = (product: Product) => {
         if (
@@ -47,6 +49,7 @@ const ProductsPage = () => {
                     .filter((value) => value.maxPower)
                     .map((value) => value.maxPower)
             );
+            product.maxPower = maxPower;
         }
         if (
             product.network?.radios &&
@@ -57,7 +60,9 @@ const ProductsPage = () => {
                     .filter((value) => value.maxSpeedMegabitsPerSecond)
                     .map((value) => value.maxSpeedMegabitsPerSecond)
             );
+            product.maxSpeed = maxSpeed;
         }
+
         setProductSelected(product)
     };
 
@@ -65,9 +70,15 @@ const ProductsPage = () => {
         <div>
             {productSelected
                 ? <ProductDetails productSelected={productSelected} onClickBack={() => setProductSelected(null)} />
-                : contentToRender === "list"
-                    ? (<ProductsList data={products} onRowSelected={onProductSelected} />)
-                    : (<ProductsGrid data={products} />)
+                :
+                <div>
+                    <HeaderProductsPage />
+                    {
+                        contentToRender === "list"
+                            ? (<ProductsList data={products} onRowSelected={onProductSelected} />)
+                            : (<ProductsGrid data={products} onRowSelected={onProductSelected} />)
+                    }
+                </div>
             }
         </div>
     );

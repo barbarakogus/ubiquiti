@@ -4,8 +4,10 @@ const StyledCardContainer = styled.div`
   border: 1px solid var(--neutral-gray);
   border-radius: 8px;
   cursor: pointer;
-  justify-content: space-between;
   margin-bottom: 1.5rem;
+  margin-right: 1.5rem;
+
+  width: 233px;
 
   &:hover {
     opacity: 0.8;
@@ -14,6 +16,7 @@ const StyledCardContainer = styled.div`
 const StyledImage = styled.img`
   background-color: var(--light-gray);
   border-radius: 8px 8px 0 0;
+  width: inherit;
 `;
 const StyledProductName = styled.p`
   color: var(--neutral-black);
@@ -28,11 +31,12 @@ const StyledProductLine = styled.p`
 
 interface ProductCardProps {
   product: Product;
+  onRowSelected: (produc: Product) => void
 }
 
-const ProductCard = ({ product }: ProductCardProps) => {
+const ProductCard = ({ product, onRowSelected }: ProductCardProps) => {
   return (
-    <StyledCardContainer>
+    <StyledCardContainer onClick={() => onRowSelected(product)}>
       <StyledImage
         src="https://storage.googleapis.com/barbara_ubiquiti/images/resize_optimized_img.png"
         alt={product.name}

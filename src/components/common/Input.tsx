@@ -9,7 +9,7 @@ const StyledMainDiv = styled.div`
     justify-content: space-between;
     padding: 6px 10px;
     width: 344px;
-`
+`;
 
 const StyledIconSearch = styled(FiSearch)`
   color: var(--dark-gray);

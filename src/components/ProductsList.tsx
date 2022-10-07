@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import HeaderProductsPage from "./HeaderProductsPage";
 
 const StyledMainContainer = styled.div`
     margin: 1.5rem auto;
@@ -60,7 +59,6 @@ interface ProductListProps {
 const ProductsList = ({ data, onRowSelected }: ProductListProps) => {
     return (
         <>
-            <HeaderProductsPage />
             <StyledMainContainer>
                 <StyledDiv>
                     <StyledTable>

@@ -5,6 +5,8 @@ interface Product {
   icon: Icon;
   shortNames: [];
   network?: Network;
+  maxPower?: number;
+  maxSpeed?: number;
 }
 
 interface Icon {
